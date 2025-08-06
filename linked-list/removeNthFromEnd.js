@@ -17,26 +17,22 @@ const { SinglyLinkedList, UniDirectionListNode } = require("../lib/SinglyLinkedL
  * @return {ListNode}
  */
 var removeNthFromEnd = function (head, n) {
-  let slow = head,
-    fast = head,
-    count = 0;
-  while (fast && count < n) {
+  let dummy = new UniDirectionListNode(0);
+  dummy.next = head;
+  let slow = dummy,
+    fast = dummy,
+    count = 1;
+  while (fast && count <= n + 1) {
     fast = fast.next;
     count++;
   }
-  let prev = slow;
   while (fast) {
     fast = fast.next;
-    prev = slow;
     slow = slow.next;
   }
-  if (prev === slow) {
-    head = head.next;
-  } else {
-    prev.next = slow.next;
-  }
+  slow.next = slow.next.next;
 
-  return head;
+  return dummy.next;
 };
 
 function removeNthFromEnd2(head, n) {
