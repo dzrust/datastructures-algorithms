@@ -22,56 +22,33 @@ const { SinglyLinkedList } = require("./lib/SinglyLinkedList");
  * @return {number}
  */
 var pairSum = function (head) {
-  let ans = 0,
-    count = 0;
-  let [preparedList, length] = reverseLatterHalf(head);
-  let slow = preparedList,
-    fast = preparedList;
-  while (fast && count < length / 2) {
-    fast = fast.next;
-    count++;
-  }
-  ans = Math.max(ans, slow.val + fast.val);
+  let ans = 0;
+  let dummy = head;
+  let preparedList = reverseLatterHalf(dummy);
+  let slow = head, fast = preparedList;
   while (fast) {
     ans = Math.max(ans, slow.val + fast.val);
-    slow = slow.next;
     fast = fast.next;
+    slow = slow.next;
   }
   return ans;
 };
 
 const reverseLatterHalf = (head) => {
-  if (!head.next.next) return [head, 2]; // there are only 2 elements in the list
-  let ogHead = head;
-  let [middle, splitNode, length] = findMiddle(head);
-  let [reverseHead, tail] = reverseList(middle);
-  if (splitNode) {
-    splitNode.next = reverseHead;
-  } else {
-    splitNode = reverseHead;
-    ogHead = reverseHead;
-  }
-  if (tail) {
-    while (reverseHead && reverseHead.next) {
-      reverseHead = reverseHead.next;
-    }
-    reverseHead.next = tail;
-  }
-  return [ogHead, length];
+  let middle = findMiddle(head);
+  let reversedList = reverseList(middle);
+  return reversedList;
 };
 
 const findMiddle = (head) => {
   let slow = head,
-    fast = head.next,
-    splitNode = null,
-    length = 2;
+    fast = head;
   while (fast && fast.next) {
     splitNode = slow;
     slow = slow.next;
     fast = fast.next.next;
-    length += 2;
   }
-  return [slow.next, splitNode ? splitNode.next : null, length];
+  return slow;
 };
 
 const reverseList = (head) => {
@@ -84,7 +61,7 @@ const reverseList = (head) => {
     prev = curr;
     curr = nextNode;
   }
-  return [prev, nextNode];
+  return prev;
 };
 
 /**
