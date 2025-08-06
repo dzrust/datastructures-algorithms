@@ -18,7 +18,24 @@ const { SinglyLinkedList } = require("../lib/SinglyLinkedList");
  * @return {ListNode}
  */
 var deleteMiddle = function (head) {
-    return head;
+  let prev = head,
+    slow = head,
+    fast = head;
+  while (fast && fast.next) {
+    fast = fast.next.next;
+    prev = slow;
+    slow = slow.next;
+  }
+  if (!prev.next) {
+    return null; // 1 element
+  }
+  if (!slow.next) {
+    prev.next = null; // 2 elements
+  } else {
+    prev.next = slow.next;
+    slow.next = null;
+  }
+  return head;
 };
 
 /**
@@ -61,3 +78,7 @@ Constraints:
 
 console.log(logList(deleteMiddle(new SinglyLinkedList([1, 3, 4, 7, 1, 2, 6]).getHead())));
 console.log(logList(deleteMiddle(new SinglyLinkedList([1, 2, 3, 4]).getHead())));
+console.log(logList(deleteMiddle(new SinglyLinkedList([2, 1]).getHead())));
+console.log(logList(deleteMiddle(new SinglyLinkedList([2]).getHead())));
+console.log(logList(deleteMiddle(new SinglyLinkedList([3, 1, 2]).getHead())));
+//[3,1,2]
