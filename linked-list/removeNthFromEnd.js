@@ -9,7 +9,7 @@
  */
 
 const { logList } = require("../lib/LinkedListUtils");
-const { SinglyLinkedList } = require("../lib/SinglyLinkedList");
+const { SinglyLinkedList, UniDirectionListNode } = require("../lib/SinglyLinkedList");
 
 /**
  * @param {ListNode} head
@@ -38,6 +38,24 @@ var removeNthFromEnd = function (head, n) {
 
   return head;
 };
+
+function removeNthFromEnd2(head, n) {
+  let dummy = new UniDirectionListNode(0);
+  dummy.next = head;
+  let first = dummy;
+  let second = dummy;
+  // Advances first pointer so that the gap between first and second is n nodes apart
+  for (let i = 1; i <= n + 1; i++) {
+    first = first.next;
+  }
+  // Move first to the end, maintaining the gap
+  while (first) {
+    first = first.next;
+    second = second.next;
+  }
+  second.next = second.next.next;
+  return dummy.next;
+}
 
 /**
  * Example 1:
