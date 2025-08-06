@@ -15,7 +15,7 @@ Given the head of a linked list with even length, return the maximum twin sum of
  * }
  */
 
-const { SinglyLinkedList } = require("./lib/SinglyLinkedList");
+const { SinglyLinkedList } = require("../lib/SinglyLinkedList");
 
 /**
  * @param {ListNode} head
