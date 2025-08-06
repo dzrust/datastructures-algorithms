@@ -41,6 +41,7 @@ var pairSum = function (head) {
 };
 
 const reverseLatterHalf = (head) => {
+  if (!head.next.next) return [head, 2]; // there are only 2 elements in the list
   let ogHead = head;
   let [middle, splitNode, length] = findMiddle(head);
   let [reverseHead, tail] = reverseList(middle);
@@ -70,7 +71,7 @@ const findMiddle = (head) => {
     fast = fast.next.next;
     length += 2;
   }
-  return [slow, splitNode, length];
+  return [slow.next, splitNode ? splitNode.next : null, length];
 };
 
 const reverseList = (head) => {
@@ -125,4 +126,4 @@ Constraints:
 
 console.log(pairSum(new SinglyLinkedList([5, 4, 2, 1]).getHead()));
 console.log(pairSum(new SinglyLinkedList([4, 2, 2, 3]).getHead()));
-console.log(pairSum(new SinglyLinkedList([1,100000]).getHead()));
+console.log(pairSum(new SinglyLinkedList([1, 100000]).getHead()));
