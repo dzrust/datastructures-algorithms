@@ -21,10 +21,69 @@ const { SinglyLinkedList } = require("./lib/SinglyLinkedList");
  * @param {ListNode} head
  * @return {number}
  */
-var pairSum = function(head) {
-    let ans = 0;
+var pairSum = function (head) {
+  let ans = 0,
+    count = 0;
+  let [preparedList, length] = reverseLatterHalf(head);
+  let slow = preparedList,
+    fast = preparedList;
+  while (fast && count < length / 2) {
+    fast = fast.next;
+    count++;
+  }
+  ans = Math.max(ans, slow.val + fast.val);
+  while (fast) {
+    ans = Math.max(ans, slow.val + fast.val);
+    slow = slow.next;
+    fast = fast.next;
+  }
+  return ans;
+};
 
-    return ans;
+const reverseLatterHalf = (head) => {
+  let ogHead = head;
+  let [middle, splitNode, length] = findMiddle(head);
+  let [reverseHead, tail] = reverseList(middle);
+  if (splitNode) {
+    splitNode.next = reverseHead;
+  } else {
+    splitNode = reverseHead;
+    ogHead = reverseHead;
+  }
+  if (tail) {
+    while (reverseHead && reverseHead.next) {
+      reverseHead = reverseHead.next;
+    }
+    reverseHead.next = tail;
+  }
+  return [ogHead, length];
+};
+
+const findMiddle = (head) => {
+  let slow = head,
+    fast = head.next,
+    splitNode = null,
+    length = 2;
+  while (fast && fast.next) {
+    splitNode = slow;
+    slow = slow.next;
+    fast = fast.next.next;
+    length += 2;
+  }
+  return [slow, splitNode, length];
+};
+
+const reverseList = (head) => {
+  let prev = null,
+    nextNode = null,
+    curr = head;
+  while (curr) {
+    nextNode = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = nextNode;
+  }
+  return [prev, nextNode];
 };
 
 /**
@@ -64,5 +123,6 @@ Constraints:
  * 
  */
 
-console.log(pairSum(new SinglyLinkedList([5,4,2,1]).getHead()));
-console.log(pairSum(new SinglyLinkedList([4,2,2,3]).getHead()));
+console.log(pairSum(new SinglyLinkedList([5, 4, 2, 1]).getHead()));
+console.log(pairSum(new SinglyLinkedList([4, 2, 2, 3]).getHead()));
+console.log(pairSum(new SinglyLinkedList([1,100000]).getHead()));
