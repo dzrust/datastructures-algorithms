@@ -1,4 +1,5 @@
 const { SinglyLinkedList } = require("../lib/SinglyLinkedList.js");
+const { logList } = require("../lib/LinkedListUtils.js");
 /**
  * Given the head of a singly linked list and two integers left and right where left <= right,
  * reverse the nodes of the list from position left to position right, and return the reversed list.
@@ -58,16 +59,6 @@ let reverseList = (head, length) => {
     count++;
   }
   return [prev, nextNode];
-};
-
-let logList = (head) => {
-  let dummy = head,
-    ans = [];
-  while (dummy) {
-    ans.push(dummy.val);
-    dummy = dummy.next;
-  }
-  return ans;
 };
 
 /**
