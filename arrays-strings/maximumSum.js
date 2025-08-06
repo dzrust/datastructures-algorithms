@@ -5,7 +5,7 @@ Return the maximum value of nums[i] + nums[j] that you can obtain over all possi
  * @param {number[]} nums
  * @return {number}
  */
-var maximumSum = function(nums) {
+var maximumSum = function (nums) {
   const numMap = new Map(),
     length = nums.length;
   let ans = -1;
@@ -16,19 +16,20 @@ var maximumSum = function(nums) {
     if (largestNumberFound > 0) {
       ans = Math.max(ans, largestNumberFound + num);
     }
-    numMap.set(digitSum, Math.max(num, largestNumberFound))
+    numMap.set(digitSum, Math.max(num, largestNumberFound));
   }
   return ans;
 };
 
 const getDigitSum = (num) => {
-  let digitSum = 0, cur = num;
+  let digitSum = 0,
+    cur = num;
 
   // Calculate the digit sum of the current element
   while (cur > 0) {
     let currDigit = cur % 10;
     digitSum += currDigit;
-    cur = Math.floor(cur / 10)
+    cur = Math.floor(cur / 10);
   }
   return digitSum;
 };

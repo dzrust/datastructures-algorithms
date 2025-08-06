@@ -25,11 +25,7 @@ var getAverages = function (nums, k) {
     if (startIndex < 0 || endIndex >= nums.length) {
       ans.push(-1);
     } else {
-      ans.push(
-        Math.trunc(
-          (prefix[endIndex] - prefix[startIndex] + nums[startIndex]) / itemCount
-        )
-      );
+      ans.push(Math.trunc((prefix[endIndex] - prefix[startIndex] + nums[startIndex]) / itemCount));
     }
   }
   return ans;
@@ -58,7 +54,5 @@ var getAveragesOpt = function (nums, k) {
 console.log(getAverages([7, 4, 3, 9, 1, 8, 5, 2, 6], 3));
 console.log(getAverages([100000], 0));
 console.log(getAverages([8], 100000));
-console.log(
-  getAverages([40527, 53696, 10730, 66491, 62141, 83909, 78635, 18560], 2)
-);
+console.log(getAverages([40527, 53696, 10730, 66491, 62141, 83909, 78635, 18560], 2));
 //40527+53696+10730+66491+62141 =

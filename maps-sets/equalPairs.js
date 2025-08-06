@@ -27,40 +27,40 @@ var equalPairs = function (grid) {
   return ans;
 };
 
-var equalPairs2 = function(grid) {
-    let convertToKey = arr => {
-        let key = "";
-        for (const num of arr) {
-            key += num + ",";
-        }
-        
-        return key;
+var equalPairs2 = function (grid) {
+  let convertToKey = (arr) => {
+    let key = "";
+    for (const num of arr) {
+      key += num + ",";
     }
-    
-    let dic = new Map();
-    for (const arr of grid) {
-        let key = convertToKey(arr);
-        dic.set(key, (dic.get(key) || 0) + 1);
+
+    return key;
+  };
+
+  let dic = new Map();
+  for (const arr of grid) {
+    let key = convertToKey(arr);
+    dic.set(key, (dic.get(key) || 0) + 1);
+  }
+
+  let dic2 = new Map();
+  for (let col = 0; col < grid[0].length; col++) {
+    let currentCol = [];
+    for (let row = 0; row < grid.length; row++) {
+      currentCol.push(grid[row][col]);
     }
-    
-    let dic2 = new Map();
-    for (let col = 0; col < grid[0].length; col++) {
-        let currentCol = [];
-        for (let row = 0; row < grid.length; row++) {
-            currentCol.push(grid[row][col]);
-        }
-        
-        let key = convertToKey(currentCol);
-        dic2.set(key, (dic2.get(key) || 0) + 1);
-    }
-    
-    let ans = 0;
-    for (const [key, val] of dic) {
-        ans += val * dic2.get(key) || 0;
-    }
-    
-    return ans;
-}
+
+    let key = convertToKey(currentCol);
+    dic2.set(key, (dic2.get(key) || 0) + 1);
+  }
+
+  let ans = 0;
+  for (const [key, val] of dic) {
+    ans += val * dic2.get(key) || 0;
+  }
+
+  return ans;
+};
 
 /**
  * 
@@ -97,7 +97,7 @@ console.log(
     [3, 2, 1],
     [1, 7, 6],
     [2, 7, 7],
-  ])
+  ]),
 );
 console.log(
   equalPairs([
@@ -105,7 +105,7 @@ console.log(
     [1, 4, 4, 5],
     [2, 4, 2, 2],
     [2, 4, 2, 2],
-  ])
+  ]),
 );
 
 console.log(
@@ -114,13 +114,13 @@ console.log(
     [7, 7, 7, 7],
     [7, 7, 7, 7],
     [7, 7, 7, 7],
-  ])
+  ]),
 );
 console.log(
   equalPairs([
     [11, 1],
     [1, 11],
-  ])
+  ]),
 );
 // [r1, c1], [r1,c2], [r1,c3], [r1,c4]
 // [r2, c1], [r2,c2], [r2,c3], [r2,c4]

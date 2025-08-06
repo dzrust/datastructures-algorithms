@@ -8,15 +8,18 @@ Return the number of nice sub-arrays.
  * @return {number}
  */
 var numberOfSubarrays = function (nums, k) {
-    const count = new Map([[0,1]]), length = nums.length;
-    let i = 0, curr = 0, ans = 0;
-    for (; i < length; i++) {
-        curr += nums[i] % 2 === 1 ? 1 : 0;
-        ans += count.get(curr - k) ?? 0;
-        count.set(curr, (count.get(curr) ?? 0) + 1);
-    }
+  const count = new Map([[0, 1]]),
+    length = nums.length;
+  let i = 0,
+    curr = 0,
+    ans = 0;
+  for (; i < length; i++) {
+    curr += nums[i] % 2 === 1 ? 1 : 0;
+    ans += count.get(curr - k) ?? 0;
+    count.set(curr, (count.get(curr) ?? 0) + 1);
+  }
 
-    return ans;
+  return ans;
 };
 
 /**

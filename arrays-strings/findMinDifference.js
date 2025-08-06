@@ -19,7 +19,7 @@ var findMinDifference = function (timePoints) {
     ans = Math.min(ans, temp);
   }
   return ans;
-}
+};
 /**
  * 
  * Example 1:

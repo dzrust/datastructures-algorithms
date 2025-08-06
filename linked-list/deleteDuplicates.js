@@ -9,16 +9,16 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var deleteDuplicates = function(head) {
-    let pnter = head;
-    while (pnter && pnter.next) {
-        if (pnter.val === pnter.next.val) {
-            pnter.next = pnter.next.next;
-        } else {
-            pnter = pnter.next;
-        }
+var deleteDuplicates = function (head) {
+  let pnter = head;
+  while (pnter && pnter.next) {
+    if (pnter.val === pnter.next.val) {
+      pnter.next = pnter.next.next;
+    } else {
+      pnter = pnter.next;
     }
-    return head;
+  }
+  return head;
 };
 
 //[1,1,2]
@@ -29,5 +29,5 @@ var deleteDuplicates = function(head) {
  * pntr -> 1
  * pntr.next -> 1
  * ------------
- * 
+ *
  */

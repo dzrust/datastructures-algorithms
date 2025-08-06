@@ -15,19 +15,19 @@ var maxVowels = function (s, k) {
     length = s.length;
   for (; right < k; right++) {
     if (isVowel(s[right])) {
-        cur ++;
+      cur++;
     }
   }
   let ans = cur;
   for (; right < length; right++) {
     if (isVowel(s[left])) {
-        cur --;
+      cur--;
     }
     if (isVowel(s[right])) {
-        cur ++;
+      cur++;
     }
     ans = Math.max(ans, cur);
-    left ++;
+    left++;
   }
 
   return ans;

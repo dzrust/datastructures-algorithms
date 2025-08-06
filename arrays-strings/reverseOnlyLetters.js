@@ -10,11 +10,7 @@
  */
 var reverseOnlyLetters = function (s) {
   const ans = [];
-  for (
-    let left = 0, right = s.length - 1, length = s.length;
-    left < length;
-    left++
-  ) {
+  for (let left = 0, right = s.length - 1, length = s.length; left < length; left++) {
     if (isAlpha(s[left])) {
       while (!isAlpha(s[right])) {
         right--;

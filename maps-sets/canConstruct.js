@@ -12,10 +12,7 @@ var canConstruct = function (ransomNote, magazine) {
     ransomNoteLength = ransomNote.length,
     magazineLength = magazine.length;
   for (let i = 0; i < ransomNoteLength; i++) {
-    ransomNoteCount.set(
-      ransomNote[i],
-      (ransomNoteCount.get(ransomNote[i]) ?? 0) + 1
-    );
+    ransomNoteCount.set(ransomNote[i], (ransomNoteCount.get(ransomNote[i]) ?? 0) + 1);
   }
   for (let i = 0; i < magazineLength; i++) {
     if (!ransomNoteCount.has(magazine[i])) continue;

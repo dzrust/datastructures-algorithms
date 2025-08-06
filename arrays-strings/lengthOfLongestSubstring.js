@@ -1,24 +1,27 @@
 /**
  * Given a string s, find the length of the longest substring without duplicate characters.
- * 
- * 
+ *
+ *
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
-    const charSet = new Set(), length = s.length;
-    let ans = 0, left = 0, right = 0, cur = "";
-    for (right; right < length; right ++) {
-        while (charSet.has(s[right])) {
-            charSet.delete(s[left]);
-            left ++;
-        }
-        charSet.add(s[right]);
-        ans = Math.max(ans, right - left + 1);
+var lengthOfLongestSubstring = function (s) {
+  const charSet = new Set(),
+    length = s.length;
+  let ans = 0,
+    left = 0,
+    right = 0,
+    cur = "";
+  for (right; right < length; right++) {
+    while (charSet.has(s[right])) {
+      charSet.delete(s[left]);
+      left++;
     }
-    return ans;
+    charSet.add(s[right]);
+    ans = Math.max(ans, right - left + 1);
+  }
+  return ans;
 };
-
 
 /**
  * 

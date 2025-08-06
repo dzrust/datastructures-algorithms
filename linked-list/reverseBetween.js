@@ -20,7 +20,8 @@ var reverseBetween = function (head, left, right) {
   if (!head || !head.next || right - left === 0) {
     return head;
   }
-  let splitNode = null, ogHead = head;
+  let splitNode = null,
+    ogHead = head;
   let cur = 1;
   while (head && cur < left) {
     splitNode = head;
@@ -97,14 +98,8 @@ Constraints:
  
 Follow up: Could you do it in one pass?
  */
-console.log(
-  logList(reverseBetween(new SinglyLinkedList([1, 2, 3, 4, 5]).getHead(), 2, 4))
-);
+console.log(logList(reverseBetween(new SinglyLinkedList([1, 2, 3, 4, 5]).getHead(), 2, 4)));
 console.log(logList(reverseBetween(new SinglyLinkedList([5]).getHead(), 1, 1)));
 console.log(logList(reverseBetween(new SinglyLinkedList([]).getHead(), 1, 1)));
-console.log(
-  logList(reverseBetween(new SinglyLinkedList([3, 5]).getHead(), 1, 1))
-);
-console.log(
-  logList(reverseBetween(new SinglyLinkedList([3, 5]).getHead(), 1, 2))
-);
+console.log(logList(reverseBetween(new SinglyLinkedList([3, 5]).getHead(), 1, 1)));
+console.log(logList(reverseBetween(new SinglyLinkedList([3, 5]).getHead(), 1, 2)));

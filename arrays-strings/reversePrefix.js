@@ -18,7 +18,7 @@ var reversePrefix = function (word, ch) {
     const temp = ans[i];
     ans[i] = ans[right];
     ans[right] = temp;
-    right --;
+    right--;
   }
   return ans.join("");
 };

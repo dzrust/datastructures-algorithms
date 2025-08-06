@@ -20,7 +20,10 @@ var moveZeroes = function (nums) {
     }
   }
 };
-const testCases = [[0, 2, 3, 4, 0, 1, 2, 3, 0], [1,0]];
+const testCases = [
+  [0, 2, 3, 4, 0, 1, 2, 3, 0],
+  [1, 0],
+];
 testCases.forEach((testcase) => {
   moveZeroes(testcase);
   console.log(testcase);

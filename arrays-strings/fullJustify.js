@@ -26,21 +26,13 @@ var fullJustify = function (words, maxWidth) {
     cur = 0,
     length = words.length;
   for (; right < length; right++) {
-    cur +=
-      words[right].length === maxWidth ? words.length : words[right].length;
+    cur += words[right].length === maxWidth ? words.length : words[right].length;
     if (cur > maxWidth) {
-      ans.push(
-        formatLine(
-          false,
-          words.slice(left, right),
-          maxWidth,
-          cur - words[right].length
-        )
-      );
+      ans.push(formatLine(false, words.slice(left, right), maxWidth, cur - words[right].length));
       cur = words[right].length;
       left = right;
     }
-    cur ++; // add room for a space afterwards
+    cur++; // add room for a space afterwards
   }
   ans.push(formatLine(true, words.slice(left, right), maxWidth, cur));
   return ans;
@@ -53,7 +45,7 @@ const formatLine = (isLastLine, words, maxWidth, lineSize) => {
     return line;
   } else {
     const leftoverSpace = maxWidth - lineSize + 1;
-    let spaceSize = Math.floor((leftoverSpace) / (words.length - 1));
+    let spaceSize = Math.floor(leftoverSpace / (words.length - 1));
     spaceSize = Math.max(spaceSize, 0);
     let extraSpace = leftoverSpace % (words.length - 1);
     let line = "";
@@ -109,15 +101,8 @@ Output:
  * 
  */
 
-console.log(
-  fullJustify(
-    ["This", "is", "an", "example", "of", "text", "justification."],
-    16
-  )
-);
-console.log(
-  fullJustify(["What", "must", "be", "acknowledgment", "shall", "be"], 16)
-);
+console.log(fullJustify(["This", "is", "an", "example", "of", "text", "justification."], 16));
+console.log(fullJustify(["What", "must", "be", "acknowledgment", "shall", "be"], 16));
 console.log(
   fullJustify(
     [
@@ -140,6 +125,6 @@ console.log(
       "we",
       "do",
     ],
-    20
-  )
+    20,
+  ),
 );

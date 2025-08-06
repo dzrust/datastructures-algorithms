@@ -25,7 +25,8 @@ var pairSum = function (head) {
   let ans = 0;
   let dummy = head;
   let preparedList = reverseLatterHalf(dummy);
-  let slow = head, fast = preparedList;
+  let slow = head,
+    fast = preparedList;
   while (fast) {
     ans = Math.max(ans, slow.val + fast.val);
     fast = fast.next;

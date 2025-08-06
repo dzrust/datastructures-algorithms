@@ -87,7 +87,7 @@ console.log(
     [4, 9],
     [10, 4],
     [10, 9],
-  ])
+  ]),
 );
 console.log(
   findWinners([
@@ -95,5 +95,5 @@ console.log(
     [1, 3],
     [5, 4],
     [6, 4],
-  ])
+  ]),
 );

@@ -7,8 +7,8 @@ function longestSubArray(nums, k) {
   for (; right < length; right++) {
     cur += nums[right];
     while (cur > k) {
-      cur -= nums[left]; 
-      left++; 
+      cur -= nums[left];
+      left++;
     }
     ans = Math.max(ans, right - left + 1);
   }

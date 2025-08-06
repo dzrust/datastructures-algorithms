@@ -15,11 +15,21 @@ var answerQueries = function (nums, queries, limit) {
     prefix.push(prefix[prefix.length - 1] + nums[i]);
   }
   const answer = [];
-  for ([x,y] of queries) {
+  for ([x, y] of queries) {
     const current = prefix[y] - prefix[x] + nums[x];
     answer.push(current < limit);
   }
   return answer;
 };
 
-console.log(answerQueries([1, 6, 3, 2, 7, 2], [[0, 3], [2, 5], [2, 4]], 13));
+console.log(
+  answerQueries(
+    [1, 6, 3, 2, 7, 2],
+    [
+      [0, 3],
+      [2, 5],
+      [2, 4],
+    ],
+    13,
+  ),
+);
