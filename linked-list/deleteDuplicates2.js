@@ -16,33 +16,23 @@ const { SinglyLinkedList, UniDirectionListNode } = require("../lib/SinglyLinkedL
  */
 var deleteDuplicates = function (head) {
   if (!head || !head.next) return head; // null or single element
-  let temp = new UniDirectionListNode(-101);
-  temp.next = head;
-  let newHead = temp.next,
-    cur = temp.val,
+  let temp = new UniDirectionListNode(-101),
+    right = head,
     prev = temp;
-  while (newHead && newHead.next) {
-    if (newHead.val === cur) {
-      prev.next = newHead.next;
-      newHead = prev.next;
+  temp.next = head;
+  while (right && right.next) {
+    if (prev.next.val === right.next.val) {
+      while (right && right.next && prev.next.val === right.next.val) {
+        right = right.next;
+      }
+      right = right.next;
+      prev.next = right;
     } else {
-      prev = newHead;
-      newHead = newHead.next;
-      cur = newHead.next.val;
+      prev = right;
+      right = right.next;
     }
   }
   return temp.next;
-};
-
-const removeDuplicates = (head) => {
-  if (!head) return null;
-  let newHead = head,
-    cur = head.val;
-  while (newHead && cur === newHead.val) {
-    cur = newHead.val;
-    newHead = newHead.next;
-  }
-  return newHead;
 };
 
 /**
