@@ -5,10 +5,10 @@
 var removeDuplicates = function(s) {
     const stack = [], {length} = s;
     for (let i = 0; i < length; i++) {
-        stack.push(s[i]);
-        while (stack.length > 1 && stack[stack.length - 1] === stack[stack.length - 2]) {
-            stack.pop(); // pop both
+        if (s[i] === stack[stack.length - 1]) {
             stack.pop();
+        } else {
+            stack.push(s[i]);
         }
     }
     return stack.join("");
